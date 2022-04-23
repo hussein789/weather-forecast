@@ -1,7 +1,7 @@
 package com.hussien.weatherforecast.domain.repository
 
-import com.hussien.weatherforecast.data.model.Day
+import com.hussien.weatherforecast.data.model.WeatherDataList
 
 interface WeatherForecastRepository {
-    suspend fun getWeatherForecast():List<Day?>?
+    suspend fun getWeatherForecast(): WeatherDataList
 }

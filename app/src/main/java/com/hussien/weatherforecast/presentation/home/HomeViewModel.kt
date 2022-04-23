@@ -17,7 +17,6 @@ class HomeViewModel @Inject constructor(
     private val _weatherUiState = MutableLiveData<WeatherUiState>(WeatherUiState())
     val weatherUiState : LiveData<WeatherUiState> get() = _weatherUiState
 
-    private var currentSelectedDay = SelectedDay.CURRENT
 
     init {
         getWeatherData()
@@ -44,7 +43,3 @@ data class WeatherUiState(
     val isLoading:Boolean = false,
     val errorMessage:Int? = null
 )
-
-enum class SelectedDay {
-    CURRENT,NEXT,AFTER
-}
