@@ -12,8 +12,8 @@ class GetWeatherForecastUseCase @Inject constructor(
     private val getTimeFormattedUseCase: GetTimeFormattedUseCase,
     private val getDayNameUseCase: GetDayNameUseCase
 ) {
-    suspend operator fun invoke(): WeatherModel {
-        val response = weatherForecastRepository.getWeatherForecast()
+    suspend operator fun invoke(cityName:String): WeatherModel {
+        val response = weatherForecastRepository.getWeatherForecast(cityName)
         val weatherModel = getMappedModel(response)
         return weatherModel
     }

@@ -10,7 +10,7 @@ class GetDateFormattedUseCase @Inject constructor() {
         return try {
             var dateFormatter = SimpleDateFormat("yyyy-MM-dd hh:mm", Locale.ENGLISH)
             val newDate = dateFormatter.parse(date)
-            dateFormatter = SimpleDateFormat("EEEEE, dd MMM yyyy",Locale.ENGLISH)
+            dateFormatter = SimpleDateFormat("EEEE, dd MMM yyyy",Locale.ENGLISH)
             dateFormatter.format(newDate)
         } catch (ex:Exception){
             ""

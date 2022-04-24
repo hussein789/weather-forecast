@@ -9,7 +9,7 @@ import javax.inject.Inject
 class ForecastRemoteDataSourceImpl @Inject constructor(
     private val weatherForecastService: WeatherForecastService
 ) : ForecastRemoteDataSource {
-    override suspend fun getForecasts(): WeatherDataList {
-        return weatherForecastService.getWeatherForecast(BuildConfig.API_KEY,"London")
+    override suspend fun getForecasts(cityName:String): WeatherDataList {
+        return weatherForecastService.getWeatherForecast(BuildConfig.API_KEY,cityName)
     }
 }

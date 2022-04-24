@@ -1,12 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/refresh_weather"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/unsplash_hksflo1t8ia"
     android:orientation="vertical"
-    tools:context=".presentation.home.HomeFragment">
+    android:fitsSystemWindows="true"
+    tools:context=".presentation.home.HomeFragment"
+    android:background="@color/screen_bg"
+  >
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.home.HomeFragment"
+    android:id="@+id/home_container"
+    android:background="@drawable/unsplash_hksflo1t8ia"
+    >
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/search_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        android:visibility="gone"
+        android:background="@drawable/rounded_bottom_white_background"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="27dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="27dp"
+                android:gravity="center_vertical"
+                >
+
+                <ImageView
+                    android:id="@+id/back_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_back"
+                    android:layout_marginEnd="14dp"
+                    />
+                
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="8dp"
+                    app:strokeColor="@color/stroke_color"
+                    app:strokeWidth="1dp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="13dp"
+                        android:paddingEnd="13dp"
+                        >
+
+                        <EditText
+                            android:id="@+id/search_location_et"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/default_text_color"
+                            tools:text="London"
+                            android:background="@null"
+                            android:hint="@string/search_city"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="13dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@id/clear_text_icon"
+                            />
+
+                        <ImageView
+                            android:id="@+id/clear_text_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_close" />
+
+                    </RelativeLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/location_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                tools:listitem="@layout/city_item_layout"
+
+
+                />
+
+            <RelativeLayout
+                android:id="@+id/arrow_container"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="#F1F4FF"
+                android:visibility="gone"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_up"
+                    android:layout_centerInParent="true"
+                    />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -83,10 +214,10 @@
 
             <ImageView
                 android:id="@+id/main_weather_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_centerHorizontal="true"
-                tools:src="@drawable/ic_sunny" />
+                tools:src="@drawable/_13" />
 
             <TextView
                 android:id="@+id/degree_tv"
@@ -98,7 +229,7 @@
                 android:textColor="@color/white"
                 android:textSize="56sp"
                 android:textStyle="bold"
-                tools:text="82.4°F"/>
+                tools:text="82.4°F" />
 
             <TextView
                 android:id="@+id/weather_description_tv"
@@ -115,44 +246,41 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_centerHorizontal="true"
                 android:layout_below="@id/weather_description_tv"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/wind_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:src="@drawable/ic_wind"
                     android:layout_marginEnd="8dp"
-                    />
+                    android:src="@drawable/ic_wind" />
 
                 <TextView
                     android:id="@+id/wind_speed_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
                     android:textColor="@color/white"
-                    tools:text="12 mph"/>
+                    android:textSize="12sp"
+                    tools:text="12 mph" />
 
                 <ImageView
                     android:id="@+id/humidity_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:src="@drawable/ic_humidity"
-                    android:layout_marginEnd="8dp"
                     android:layout_marginStart="40dp"
-                    />
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_humidity" />
 
                 <TextView
                     android:id="@+id/humidity_speed_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
                     android:textColor="@color/white"
-                    tools:text="60 %"/>
+                    android:textSize="12sp"
+                    tools:text="60 %" />
 
 
             </LinearLayout>
@@ -195,7 +323,7 @@
                     android:id="@+id/current_day_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Today"
+                    android:text="@string/today"
                     android:textSize="12sp"
                     android:layout_marginTop="4dp"
                     android:textColor="@color/white"
@@ -233,7 +361,7 @@
                     android:id="@+id/middle_day_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Tomorrow"
+                    android:text="@string/tomorrow"
                     android:textSize="12sp"
                     android:layout_marginTop="4dp"
                     android:textColor="@color/white"
@@ -279,11 +407,16 @@
                     />
 
             </LinearLayout>
-
-
         </LinearLayout>
-
     </LinearLayout>
 
-
-</FrameLayout>
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        />
+</RelativeLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

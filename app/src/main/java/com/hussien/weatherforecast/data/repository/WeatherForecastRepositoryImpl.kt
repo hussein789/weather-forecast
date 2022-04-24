@@ -8,7 +8,7 @@ import com.hussien.weatherforecast.domain.repository.WeatherForecastRepository
 class WeatherForecastRepositoryImpl(
     private val forecastRemoteDataSource: ForecastRemoteDataSource
 ) : WeatherForecastRepository {
-    override suspend fun getWeatherForecast(): WeatherDataList {
-        return forecastRemoteDataSource.getForecasts()
+    override suspend fun getWeatherForecast(cityName:String): WeatherDataList {
+        return forecastRemoteDataSource.getForecasts(cityName)
     }
 }

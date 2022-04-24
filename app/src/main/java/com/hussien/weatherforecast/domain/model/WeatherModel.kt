@@ -16,5 +16,5 @@ data class WeatherModel(
 data class WeatherDay(
     val icon:String,
     val minMaxDegree:String,
-    val DayName:String
+    val dayName:String
 )
