@@ -76,7 +76,7 @@
 
                         <EditText
                             android:id="@+id/search_location_et"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="16sp"
                             android:textColor="@color/default_text_color"
@@ -96,6 +96,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
+                            android:visibility="gone"
                             android:src="@drawable/ic_close" />
 
                     </RelativeLayout>

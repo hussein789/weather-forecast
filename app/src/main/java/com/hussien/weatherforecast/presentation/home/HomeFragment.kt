@@ -54,10 +54,6 @@ class HomeFragment : Fragment(), LocationCallback {
             showSearchView()
         }
 
-        binding.homeContainer.setOnClickListener {
-            hideSearchView()
-        }
-
         binding.arrowContainer.setOnClickListener {
             hideSearchView()
         }
@@ -181,7 +177,6 @@ class HomeFragment : Fragment(), LocationCallback {
 
     override fun onLocationClicked(location: Location) {
         viewModel.onLocationClicked(location)
-        hideKeyboard()
         hideSearchView()
     }
 
@@ -190,6 +185,7 @@ class HomeFragment : Fragment(), LocationCallback {
         binding.searchContainer.visibility = View.GONE
         binding.searchLocationEt.setText("")
         binding.arrowContainer.visibility = View.GONE
+        hideKeyboard()
         adapter.setData(emptyList())
         adapter.notifyDataSetChanged()
     }
