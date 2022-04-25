@@ -34,9 +34,6 @@ class HomeViewModel @Inject constructor(
 
     var lastSelectedCity = "San Francisco"
 
-    init {
-        getWeatherData(lastSelectedCity)
-    }
 
     fun getWeatherData(cityName:String) {
         viewModelScope.launch {
@@ -76,6 +73,12 @@ class HomeViewModel @Inject constructor(
 
     fun onRefresh() {
         getWeatherData(lastSelectedCity)
+    }
+
+    fun init(model: WeatherModel?) {
+        model?.let {
+            _weatherModelState.value = it
+        }
     }
 }
 

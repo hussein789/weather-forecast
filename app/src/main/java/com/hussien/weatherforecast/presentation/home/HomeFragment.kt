@@ -32,6 +32,10 @@ class HomeFragment : Fragment(), LocationCallback {
     @Inject
     lateinit var factory: HomeViewModelFactory
 
+    companion object{
+        const val WEATHER_DATA_KEY = "WEATHER_DATA_KEY"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,8 +50,12 @@ class HomeFragment : Fragment(), LocationCallback {
         super.onViewCreated(view, savedInstanceState)
         initViews()
         initClickListeners()
+
+        val model = arguments?.getParcelable<WeatherModel>(WEATHER_DATA_KEY)
+        viewModel.init(model)
         observeViewModel()
     }
+
 
     private fun initClickListeners() {
         binding.searchIcon.setOnClickListener {
@@ -179,6 +187,7 @@ class HomeFragment : Fragment(), LocationCallback {
         viewModel.onLocationClicked(location)
         hideSearchView()
     }
+
 
     private fun hideSearchView() {
         binding.topView.isVisible = false

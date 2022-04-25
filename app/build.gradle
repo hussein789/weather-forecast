@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id "dagger.hilt.android.plugin"
+    id "kotlin-parcelize"
+
 }
 
 android {
@@ -52,6 +54,7 @@ dependencies {
     def interceptor_version = "4.9.3"
     def hilt_version = "2.38.1"
     def nav_version = "2.4.2"
+    def lottie_version = "3.4.0"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -101,6 +104,9 @@ dependencies {
 
     //okhttp interceptor
     implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
+
+    //lottie
+    implementation "com.airbnb.android:lottie:$lottie_version"
 
 
     testImplementation 'junit:junit:4.13.2'
