@@ -17,7 +17,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String","API_KEY","\"efab3364faad4bd380315004222304\""
+        buildConfigField "String","API_KEY","\"377c4dc436ea4068bef153032222504\""
         buildConfigField "String","BASE_URL","\"https://api.weatherapi.com/v1/\""
     }
 
@@ -104,6 +104,20 @@ dependencies {
 
 
     testImplementation 'junit:junit:4.13.2'
+    testImplementation "com.google.truth:truth:1.1.3"
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1'
+    testImplementation "androidx.test.ext:junit:1.1.3"
+    testImplementation "androidx.arch.core:core-testing:$arch_version"
+    testImplementation 'org.mockito:mockito-core:4.5.1'
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
+    testImplementation 'org.mockito:mockito-inline:2.21.0'
+
+
+
+    androidTestImplementation 'junit:junit:4.13.2'
+    androidTestImplementation "com.google.truth:truth:1.1.3"
+    androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1'
+    androidTestImplementation "androidx.arch.core:core-testing:$arch_version"
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }

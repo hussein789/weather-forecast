@@ -30,27 +30,27 @@ class GetWeatherForecastUseCase @Inject constructor(
             "${response.current?.humidity}%",
             listOf(
                 WeatherDay(
-                    response?.forecast?.forecastday?.get(0)?.day?.condition?.icon ?: "",
-                    "${response?.forecast?.forecastday?.get(0)?.day?.mintempF}°/${
-                        response?.forecast?.forecastday?.get(
+                    response.forecast?.forecastday?.get(0)?.day?.condition?.icon ?: "",
+                    "${response.forecast?.forecastday?.get(0)?.day?.mintempF}°/${
+                        response.forecast?.forecastday?.get(
                             0
                         )?.day?.maxtempF
                     }°F",
                     getDayNameUseCase.invoke(response.forecast?.forecastday?.get(0)?.date ?: "")
                 ),
                 WeatherDay(
-                    response?.forecast?.forecastday?.get(1)?.day?.condition?.icon ?: "",
-                    "${response?.forecast?.forecastday?.get(1)?.day?.mintempF}°/${
-                        response?.forecast?.forecastday?.get(
+                    response.forecast?.forecastday?.get(1)?.day?.condition?.icon ?: "",
+                    "${response.forecast?.forecastday?.get(1)?.day?.mintempF}°/${
+                        response.forecast?.forecastday?.get(
                             1
                         )?.day?.maxtempF
                     }°F",
                     getDayNameUseCase.invoke(response.forecast?.forecastday?.get(1)?.date ?: "")
                 ),
                 WeatherDay(
-                    response?.forecast?.forecastday?.get(2)?.day?.condition?.icon ?: "",
-                    "${response?.forecast?.forecastday?.get(2)?.day?.mintempF}°/${
-                        response?.forecast?.forecastday?.get(
+                    response.forecast?.forecastday?.get(2)?.day?.condition?.icon ?: "",
+                    "${response.forecast?.forecastday?.get(2)?.day?.mintempF}°/${
+                        response.forecast?.forecastday?.get(
                             2
                         )?.day?.maxtempF
                     }°F",

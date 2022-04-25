@@ -32,13 +32,13 @@ class HomeViewModel @Inject constructor(
     val searchLocationsState: LiveData<List<Location>> get() = _searchLocationsState
 
 
-    private var lastSelectedCity = "San Francisco"
+    var lastSelectedCity = "San Francisco"
 
     init {
         getWeatherData(lastSelectedCity)
     }
 
-    private fun getWeatherData(cityName:String) {
+    fun getWeatherData(cityName:String) {
         viewModelScope.launch {
             _loadingState.value = true
             try {
@@ -54,15 +54,17 @@ class HomeViewModel @Inject constructor(
     }
 
     fun onSearchLocationChanged(searchCity: String) {
-        viewModelScope.launch {
-            delay(1000)
-            try {
-                val locations = searchLocationUseCase.invoke(searchCity)
-                _searchLocationsState.value = locations
-            } catch (ex:Exception){
-                _errorState.value = R.string.generic_error
+        if(searchCity.isNotEmpty()){
+            viewModelScope.launch {
+                try {
+                    val locations = searchLocationUseCase.invoke(searchCity)
+                    _searchLocationsState.value = locations
+                } catch (ex:Exception){
+                    _errorState.value = R.string.generic_error
+                }
             }
         }
+
     }
 
     fun onLocationClicked(location: Location) {
@@ -77,9 +79,3 @@ class HomeViewModel @Inject constructor(
     }
 }
 
-data class WeatherUiState(
-    val weatherModel:WeatherModel? = null,
-    val searchLocations:MutableList<Location> = mutableListOf(),
-    val isLoading:Boolean = false,
-    val errorMessage:Int? = null
-)

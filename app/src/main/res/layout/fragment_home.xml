@@ -22,13 +22,15 @@
     android:background="@drawable/unsplash_hksflo1t8ia"
     >
 
+
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/search_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="4dp"
         android:visibility="gone"
-        android:background="@drawable/rounded_bottom_white_background"
+        app:cardCornerRadius="16dp"
         >
 
         <LinearLayout
@@ -107,7 +109,6 @@
                 android:id="@+id/location_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
                 tools:listitem="@layout/city_item_layout"
@@ -121,6 +122,7 @@
                 android:layout_height="38dp"
                 android:background="#F1F4FF"
                 android:visibility="gone"
+                android:layout_marginTop="24dp"
                 >
 
                 <ImageView
@@ -418,5 +420,15 @@
         android:layout_centerInParent="true"
         android:visibility="gone"
         />
+
+    <View
+        android:id="@+id/top_view"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:elevation="4dp"
+        android:background="@color/white"
+        android:visibility="gone"
+        />
+
 </RelativeLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

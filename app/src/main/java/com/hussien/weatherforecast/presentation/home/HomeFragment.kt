@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -170,7 +171,7 @@ class HomeFragment : Fragment(), LocationCallback {
 
     private fun handleError(errorMessage: Int?) {
         errorMessage?.let {
-            Toast.makeText(requireContext(), getString(it), Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), getString(it), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -185,6 +186,7 @@ class HomeFragment : Fragment(), LocationCallback {
     }
 
     private fun hideSearchView() {
+        binding.topView.isVisible = false
         binding.searchContainer.visibility = View.GONE
         binding.searchLocationEt.setText("")
         binding.arrowContainer.visibility = View.GONE
@@ -197,6 +199,7 @@ class HomeFragment : Fragment(), LocationCallback {
         val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
         imm!!.showSoftInput(binding.searchLocationEt, InputMethodManager.SHOW_IMPLICIT)
         binding.searchContainer.visibility = View.VISIBLE
+        binding.topView.isVisible = true
     }
 
     private fun hideKeyboard() {

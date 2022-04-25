@@ -2,6 +2,7 @@ package com.hussien.weatherforecast.presentation.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.hussien.weatherforecast.data.model.Location
 import com.hussien.weatherforecast.databinding.CityItemLayoutBinding
@@ -39,6 +40,8 @@ class LocationAdapter : RecyclerView.Adapter<LocationAdapter.LocationViewHolder>
         fun bind(location:Location){
             binding.cityNameTv.text = location.name
             binding.regionNameTv.text = location.region
+            binding.dashTv.isVisible = location.region?.isNotEmpty() == true
+
         }
     }
 }
