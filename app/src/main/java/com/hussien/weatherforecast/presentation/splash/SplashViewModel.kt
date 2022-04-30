@@ -1,5 +1,6 @@
 package com.hussien.weatherforecast.presentation.splash
 
+import android.location.Location
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,19 +24,22 @@ class SplashViewModel @Inject constructor(
 
     var lastSelectedCity = "San Francisco"
 
-    init {
-        getWeatherData(lastSelectedCity)
-    }
 
-    fun getWeatherData(cityName:String) {
+    fun getWeatherData(location: Location) {
         viewModelScope.launch {
             try {
-                val weatherData = weatherForecastUseCase.invoke(cityName)
+                val weatherData = weatherForecastUseCase.invoke("${location.latitude},${location.longitude}")
                 _weatherModelState.value = weatherData
 
             } catch (ex:Exception){
                 _errorState.value = R.string.generic_error
             }
+        }
+    }
+
+    fun onLocationRequestGranted(location: Location?) {
+        location?.let {
+            getWeatherData(it)
         }
     }
 
